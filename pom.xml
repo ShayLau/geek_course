@@ -11,6 +11,7 @@
     <modules>
         <module>01jvm</module>
         <module>learn-note</module>
+        <module>02nio</module>
     </modules>
 
     <properties>

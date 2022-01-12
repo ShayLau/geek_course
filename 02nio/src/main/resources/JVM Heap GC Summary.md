@@ -152,13 +152,13 @@ Heap
 - 平均 GC42ms,GC13次，1 次 FullGC
 - 新生代第一次晋升说明：新生代`279616K->34943K=`244673 ，堆空间`279616K->84974K`=194642，新生代有84974-34943 =50031/1024约等于48.85839 晋升到old 区，查看以下 gceasy 分析图片可得知
 
-![Untitled](week2%20f4be208c4d304b41a173e5ac4aad77f0/Untitled.png)
+![Untitled](image/Untitled.png)
 
-![Untitled](week2%20f4be208c4d304b41a173e5ac4aad77f0/Untitled%201.png)
+![Untitled](image/Untitled%201.png)
 
-![Untitled](week2%20f4be208c4d304b41a173e5ac4aad77f0/Untitled%202.png)
+![Untitled](image/Untitled%202.png)
 
-![Untitled](week2%20f4be208c4d304b41a173e5ac4aad77f0/Untitled%203.png)
+![Untitled](image/Untitled%203.png)
 
 ## Parallel GC
 
@@ -388,7 +388,7 @@ Heap
 
 GCEasy分析结果
 
-![Untitled](week2%20f4be208c4d304b41a173e5ac4aad77f0/Untitled%204.png)
+![Untitled](image/Untitled%204.png)
 
 ## 引用
 

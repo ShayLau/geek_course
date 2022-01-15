@@ -11,5 +11,14 @@
 
     <artifactId>02nio</artifactId>
 
+    <dependencies>
+
+        <!--http Client-->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.1.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

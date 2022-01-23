@@ -14,7 +14,7 @@ import java.io.IOException;
  * Http Client Example
  *
  * @author ShayLau
- * @date 2022/1/14 20:346 PM
+ * @date 2022/1/14 20:36 PM
  */
 public class HttpClientExample {
 

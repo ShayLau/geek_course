@@ -24,7 +24,7 @@ public class HttpNetWorkRequestHandle {
         boolean autoRefresh = true;
         PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), autoRefresh);
         printWriter.println("HTTP/1.1 200 OK");
-//        printWriter.println("Content-Type:text/html ;charset=utf-8");
+        printWriter.println("Content-Type:text/html ;charset=utf-8");
         String htmlBody = "Hello World";
         printWriter.println("Content-length:" + htmlBody.getBytes().length);
         printWriter.println();

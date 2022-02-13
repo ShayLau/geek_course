@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" name="student" class="com.github.shaylau.geekCourse.entity.Student" scope="prototype">
+        <constructor-arg name="name" value="张三"></constructor-arg>
+        <constructor-arg name="age" value="1"></constructor-arg>
+    </bean>
+
+    <bean id="grade" name="grade" class="com.github.shaylau.geekCourse.entity.Grade">
+        <constructor-arg name="name" value="一年级"></constructor-arg>
+        <constructor-arg name="studentList">
+            <list>
+                <ref bean="student"></ref>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

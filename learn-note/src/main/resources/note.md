@@ -25,3 +25,27 @@ java   -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:G1GC.log 
 使用CMSGC(Concurrent mark sweep) 并发标记清除 jvm heap 按照一定大小分为多个Region 
 
 java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:CMSGC.log -Xmx1g -Xms1g com.github.shaylau.geekCourse.learnNote.week02.GCLogAnalysis
+
+
+week5 
+Spring介绍  
+Spring bean 的加载
+1.xml方式配置
+2.@Bean注解方式
+3.自动配置方式
+Spring starter 的使用方式
+1.@Confuration的使用
+2.META-INF/spring.factories的使用
+@SpringBootApplication 中的@EnableAutoConfiguration
+Spring的事务
+
+原生JDBC
+JPA
+mybaties
+Hibernate 
+数据库的连接池的使用
+1.common pool
+2.c3p0
+3.druid
+4.Hikari   暂未完成需要补充
+

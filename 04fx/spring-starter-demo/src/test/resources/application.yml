@@ -1,0 +1,4 @@
+myweb:
+  webName: webApplication
+  ipaddress: localhost
+  port: 8080

@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>01jvm</module>
-        <module>learn-note</module>
         <module>02nio</module>
         <module>03concurrenty</module>
         <module>04fx</module>
+        <module>05sql</module>
     </modules>
 
     <properties>

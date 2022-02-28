@@ -1,5 +1,11 @@
 # week2
 
+## 学习资料
+
+- 深入拆解 Java 虚拟机（郑雨迪）
+
+# 垃圾回收
+
 ## 垃圾分类器列表
 
 - Serial GC (序列化 GC)
@@ -17,6 +23,25 @@
 - 标记-整理，在标记清除的基础上，将仍存活的对象，将内存碎片全部移动到内存的一侧，因为有移动内存的过程，会增加 GC的时间
 
 ## 垃圾回收实验
+
+### 执行实验相关命令
+
+```
+
+使用串行化GC
+java -XX:+UseSerialGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:SerialGC.log -Xmx1g -Xms1g GCLogAnalysis
+
+使用Java8 并行GC
+java -XX:+UseParallelGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:ParallelGC.log -Xmx1g -Xms1g GCLogAnalysis
+
+使用G1Gc(jdk9及以上)  garbage first
+java   -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:G1GC.log -Xmx1g -Xms1g GCLogAnalysis
+
+使用CMSGC(Concurrent mark sweep) 并发标记清除 jvm heap 按照一定大小分为多个Region
+
+java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:CMSGC.log -Xmx1g -Xms1g GCLogAnalysis
+
+```
 
 ### 实验说明
 
@@ -110,7 +135,7 @@ Serial GC收集器是一个单线程工作的收集器，只会使用一个处�
 分配1g 的堆空间，初始堆大小 1g 
 
 ```bash
-java -XX:+UseSerialGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:SerialGC.log -Xmx1g -Xms1g GCLogAnalysis
+java -XX:+UseSerialGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:SerialGC.log -Xmx1g -Xms1g com.github.shaylau.geekCourse.learnNote.week02.GCLogAnalysis
 ```
 
 GC 回收日志
@@ -152,13 +177,13 @@ Heap
 - 平均 GC42ms,GC13次，1 次 FullGC
 - 新生代第一次晋升说明：新生代`279616K->34943K=`244673 ，堆空间`279616K->84974K`=194642，新生代有84974-34943 =50031/1024约等于48.85839 晋升到old 区，查看以下 gceasy 分析图片可得知
 
-![Untitled](image/Untitled.png)
+![Untitled](week2%20526d3/Untitled.png)
 
-![Untitled](image/Untitled%201.png)
+![Untitled](week2%20526d3/Untitled%201.png)
 
-![Untitled](image/Untitled%202.png)
+![Untitled](week2%20526d3/Untitled%202.png)
 
-![Untitled](image/Untitled%203.png)
+![Untitled](week2%20526d3/Untitled%203.png)
 
 ## Parallel GC
 
@@ -169,7 +194,7 @@ Parallel Scavenge 并行清扫GC  根据吞吐量的虚拟机自动调节新生�
 ### 垃圾回收实验
 
 ```java
-java -XX:+UseParallelGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:ParallelGC.log -Xmx1g -Xms1g GCLogAnalysis
+java -XX:+UseParallelGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:ParallelGC.log -Xmx1g -Xms1g com.github.shaylau.geekCourse.learnNote.week02.GCLogAnalysis
 ```
 
 GC 回收日志
@@ -239,7 +264,7 @@ G1收集器除了并发标记外，其余阶段也是要完全暂停用户线程
 ### 垃圾回收实验
 
 ```java
-java   -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:G1GC.log -Xmx1g -Xms1g GCLogAnalysis
+java   -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:G1GC.log -Xmx1g -Xms1g com.github.shaylau.geekCourse.learnNote.week02.GCLogAnalysis
 ```
 
 GC 回收日志
@@ -313,7 +338,7 @@ Concurrent  mark sweep 并发标记清除算法，在并发标记和并发清除
 ### 垃圾回收实验
 
 ```java
-java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:CMSGC.log -Xmx1g -Xms1g GCLogAnalysis
+java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:CMSGC.log -Xmx1g -Xms1g com.github.shaylau.geekCourse.learnNote.week02.GCLogAnalysis
 ```
 
 GC 回收日志
@@ -388,9 +413,32 @@ Heap
 
 GCEasy分析结果
 
-![Untitled](image/Untitled%204.png)
+![Untitled](week2%20526d3/Untitled%204.png)
 
 ## 引用
 
 - 深入理解Java虚拟机：JVM高级特性与最佳实践（第3版）周志明
 - [https://gceasy.io/](https://gceasy.io/)
+
+# Java IO 通讯
+
+## 同步异步与阻塞非阻塞
+
+同步异步是通信方式
+阻塞、非阻塞是线程处理模式
+
+## 同步与异步
+
+- 同步阻塞  BIO
+- 同步非阻塞 NIO
+- IO 多路复用 io multi plexing
+    - fd(File description)文件描述符
+    - select多路复用模型
+    - poll多路复用模型
+    - epoll 多路复用模型
+- 信号驱动IO：用户空间等待 IO数据（网络 IO、磁盘 IO）,内核空间在准备好IO数据后，内核空间发送信号（Sign）给用户空间，用户空间收到信号后，用户空间revefrom查IO数据
+- 异步 IO:内核等待数据准备完成，然后将数据拷贝到用户进程缓冲区，然后发送信号告诉用户进程 IO 操作执行完毕（与 SIGIO 相比，一个是发送信号告诉用户进程数据准备完毕，一个是 IO执行完毕）
+
+ 
+
+![Untitled](week2%20526d3/Untitled%205.png)

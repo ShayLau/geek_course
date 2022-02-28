@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  * @author ShayLau
  * @date 2022/2/27 9:08 PM
  */
-@Component
 public class DataSourceRouteConfig extends AbstractRoutingDataSource {
 
     @Override

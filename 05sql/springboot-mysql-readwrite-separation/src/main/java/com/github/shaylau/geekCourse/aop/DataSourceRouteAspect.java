@@ -41,7 +41,6 @@ public class DataSourceRouteAspect {
         } else {
             //从库操作数据
             DbSelectorHolder.setSelect(DbTypeEnum.read);
-
         }
     }
 

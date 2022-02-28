@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "db.wrire")
+@ConfigurationProperties(prefix = "db.write")
 public class DbWriteProperties {
 
     /**

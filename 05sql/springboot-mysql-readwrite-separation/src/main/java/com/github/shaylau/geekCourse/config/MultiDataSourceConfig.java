@@ -2,6 +2,7 @@ package com.github.shaylau.geekCourse.config;
 
 import com.github.shaylau.geekCourse.config.properties.DbReadOnlyProperties;
 import com.github.shaylau.geekCourse.config.properties.DbWriteProperties;
+import com.github.shaylau.geekCourse.enums.DbTypeEnum;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -25,10 +26,6 @@ import java.util.Map;
  */
 @Configuration
 public class MultiDataSourceConfig {
-    // 精确到 master 目录，以便跟其他数据源隔离
-    public static final String MAPPER_LOCATION = "classpath:mapper/data/*Mapper.xml";
-    public static final String CONFIG_LOCATION = "classpath:mapper/data/config.xml";
-
 
     @Autowired
     private DbReadOnlyProperties readOnlyProperties;
@@ -71,11 +68,10 @@ public class MultiDataSourceConfig {
      */
     @Bean
     @Primary
-    public DataSource multiRoutingDataSource(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource,
-                                             @Qualifier("writeDataSource") DataSource writeDataSource) {
+    public DataSource multiRoutingDataSource(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource, @Qualifier("writeDataSource") DataSource writeDataSource) {
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("readOnly", readOnlyDataSource);
-        targetDataSources.put("write", writeDataSource);
+        targetDataSources.put(DbTypeEnum.read, readOnlyDataSource);
+        targetDataSources.put(DbTypeEnum.write, writeDataSource);
 
         DataSourceRouteConfig myRoutingDataSource = new DataSourceRouteConfig();
         myRoutingDataSource.setTargetDataSources(targetDataSources);
@@ -85,12 +81,11 @@ public class MultiDataSourceConfig {
 
     @Bean(name = "sqlSessionFactory")
     @Primary
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource,
-                                               @Qualifier("writeDataSource") DataSource writeDataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource, @Qualifier("writeDataSource") DataSource writeDataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(multiRoutingDataSource(readOnlyDataSource, writeDataSource));
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MultiDataSourceConfig.MAPPER_LOCATION));
-        sessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(MultiDataSourceConfig.CONFIG_LOCATION));
+//        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MultiDataSourceConfig.MAPPER_LOCATION));
+//        sessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(MultiDataSourceConfig.CONFIG_LOCATION));
         return sessionFactory.getObject();
     }
 }

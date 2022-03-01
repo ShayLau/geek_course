@@ -1,8 +1,9 @@
 package com.github.shaylau.geekCourse.config;
 
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.github.shaylau.geekCourse.config.properties.DbReadOnlyProperties;
 import com.github.shaylau.geekCourse.config.properties.DbWriteProperties;
-import com.github.shaylau.geekCourse.enums.DbTypeEnum;
+import com.github.shaylau.geekCourse.commons.enums.DbTypeEnum;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -79,13 +80,22 @@ public class MultiDataSourceConfig {
     }
 
 
+//    @Bean(name = "sqlSessionFactory")
+//    @Primary
+//    public SqlSessionFactory sqlSessionFactory(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource, @Qualifier("writeDataSource") DataSource writeDataSource) throws Exception {
+//        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+//        sessionFactory.setDataSource(multiRoutingDataSource(readOnlyDataSource, writeDataSource));
+////        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MultiDataSourceConfig.MAPPER_LOCATION));
+////        sessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(MultiDataSourceConfig.CONFIG_LOCATION));
+//        return sessionFactory.getObject();
+//    }
+
     @Bean(name = "sqlSessionFactory")
     @Primary
     public SqlSessionFactory sqlSessionFactory(@Qualifier("readOnlyDataSource") DataSource readOnlyDataSource, @Qualifier("writeDataSource") DataSource writeDataSource) throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(multiRoutingDataSource(readOnlyDataSource, writeDataSource));
-//        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MultiDataSourceConfig.MAPPER_LOCATION));
-//        sessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(MultiDataSourceConfig.CONFIG_LOCATION));
-        return sessionFactory.getObject();
+        MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
+        factoryBean.setDataSource(multiRoutingDataSource(readOnlyDataSource, writeDataSource));
+        factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/github/shaylau/geekCourse/mapper/*.xml"));
+        return factoryBean.getObject();
     }
 }

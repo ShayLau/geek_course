@@ -1,4 +1,4 @@
-package com.github.shaylau.geekCourse.enums;
+package com.github.shaylau.geekCourse.commons.enums;
 
 
 /**

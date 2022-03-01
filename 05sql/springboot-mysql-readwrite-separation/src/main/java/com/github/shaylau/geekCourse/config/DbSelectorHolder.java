@@ -1,6 +1,6 @@
 package com.github.shaylau.geekCourse.config;
 
-import com.github.shaylau.geekCourse.enums.DbTypeEnum;
+import com.github.shaylau.geekCourse.commons.enums.DbTypeEnum;
 import org.springframework.stereotype.Component;
 
 /**

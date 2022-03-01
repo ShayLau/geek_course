@@ -24,7 +24,7 @@ public class OrderInfo {
     /**
      * uid
      */
-    private String uid;
+    private String uId;
 
     /**
      * status

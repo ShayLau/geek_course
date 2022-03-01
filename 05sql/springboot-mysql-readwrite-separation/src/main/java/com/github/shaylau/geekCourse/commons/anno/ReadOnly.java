@@ -1,4 +1,4 @@
-package com.github.shaylau.geekCourse.anno;
+package com.github.shaylau.geekCourse.commons.anno;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ShayLau
  * @date 2022/2/28 18:05
  */
-@RequestMapping("/order/info")
+@RequestMapping("/order")
 @RestController
 public class OrderInfoController {
     @Autowired

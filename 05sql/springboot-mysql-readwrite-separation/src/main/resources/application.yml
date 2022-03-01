@@ -1,11 +1,13 @@
 db:
-  readonly:
+  write:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3316/shop
-    username: repl
-    password: 123456
-  write:
+    username: root
+    password: admin123
+  readonly:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3326/shop
     username: root
     password: admin123
+mybatis-plus:
+  mapper-locations: classpath*:com/github/shaylau/geekCourse/mapper/*.xml

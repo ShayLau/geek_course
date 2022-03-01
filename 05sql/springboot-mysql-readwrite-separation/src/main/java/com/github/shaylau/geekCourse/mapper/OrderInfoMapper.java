@@ -1,4 +1,4 @@
-package com.github.shaylau.geekCourse.dao;
+package com.github.shaylau.geekCourse.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.shaylau.geekCourse.entity.OrderInfo;

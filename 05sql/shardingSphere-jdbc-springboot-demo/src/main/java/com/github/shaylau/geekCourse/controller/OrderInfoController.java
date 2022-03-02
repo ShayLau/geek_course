@@ -19,4 +19,10 @@ public class OrderInfoController {
     public void getOrderInfo() {
         orderService.getOrderInfo();
     }
+
+
+    @RequestMapping("/save")
+    public void saveOrderInfo() {
+        orderService.insertOrderInfo();
+    }
 }

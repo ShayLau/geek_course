@@ -12,7 +12,7 @@
     <artifactId>05sql</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>shardingSphere-demo</module>
+        <module>shardingSphere-jdbc-springboot-demo</module>
         <module>springboot-mysql-readwrite-separation</module>
     </modules>
 

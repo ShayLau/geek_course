@@ -32,7 +32,7 @@ create table goods
 drop table if exists  order_info;
 create table order_info
 (
-    id          varchar(50) not null comment '订单id',
+    id          bigint not null comment '订单id',
     g_id        varchar(50) not null comment '商品id',
     u_id        bigint not null comment '用户id',
     status      tinyint     not null comment '订单状态  1.已取消 2.已完成',

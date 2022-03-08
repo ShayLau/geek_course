@@ -15,6 +15,7 @@
         <module>shardingSphere-jdbc-springboot-demo</module>
         <module>springboot-mysql-readwrite-separation</module>
         <module>shardingSphere-proxy-springboot-demo</module>
+        <module>shardingSphere-xa-demo</module>
     </modules>
 
     <properties>

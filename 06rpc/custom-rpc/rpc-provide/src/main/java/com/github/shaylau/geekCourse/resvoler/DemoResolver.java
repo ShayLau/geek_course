@@ -1,7 +1,7 @@
 package com.github.shaylau.geekCourse.resvoler;
 
+import com.github.shaylau.geekCourse.api.RpcfxRequest;
 import com.github.shaylau.geekCourse.api.RpcfxResolver;
-import com.github.shaylau.geekCourse.service.UserService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,8 +20,8 @@ public class DemoResolver implements ApplicationContextAware, RpcfxResolver {
 
 
     @Override
-    public Object resolve(Object o) {
-        //获取泛型类型
-        return applicationContext.getBean(UserService.class);
+    public Object resolve(Class t) {
+        return applicationContext.getBean(t);
     }
+
 }

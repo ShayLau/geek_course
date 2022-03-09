@@ -1,7 +1,7 @@
 package com.github.shaylau.geekCourse.api;
 
-public interface RpcfxResolver<T> {
+public interface RpcfxResolver  {
 
-    Object resolve(T t);
+    Object resolve(Class t);
 
 }

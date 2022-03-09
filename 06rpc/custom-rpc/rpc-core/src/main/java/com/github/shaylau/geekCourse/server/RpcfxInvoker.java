@@ -21,10 +21,9 @@ public class RpcfxInvoker {
 
     public RpcfxResponse invoke(RpcfxRequest request) {
         RpcfxResponse response = new RpcfxResponse();
-        Class serviceClass = request.getServiceClass();
 
         try {
-            Object service = resolver.resolve(serviceClass);
+            Object service = resolver.resolve(request.getServiceClass());
             Method method = resolveMethodFromClass(service.getClass(), request.getMethod());
             Object result = method.invoke(service, request.getParams()); // dubbo, fastjson,
             // 两次json序列化能否合并成一个

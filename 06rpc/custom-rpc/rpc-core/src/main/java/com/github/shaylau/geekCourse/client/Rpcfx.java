@@ -18,9 +18,9 @@ import java.util.List;
 
 public final class Rpcfx {
 
-//    static {
-//        ParserConfig.getGlobalInstance().addAccept("io.kimmking");
-//    }
+    static {
+        ParserConfig.getGlobalInstance().addAccept("com.github.shaylau.geekCourse");
+    }
 
     public static <T, filters> T createFromRegistry(final Class<T> serviceClass, final String zkUrl, Router router, LoadBalancer loadBalance, Filter filter) {
 

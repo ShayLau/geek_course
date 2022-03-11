@@ -12,7 +12,7 @@
     <artifactId>06rpc</artifactId>
     <modules>
         <module>custom-rpc</module>
-        <module>dubbo-rpc</module>
+        <module>dubbo-hmily</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

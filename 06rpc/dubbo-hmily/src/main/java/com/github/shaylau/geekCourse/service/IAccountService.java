@@ -8,5 +8,5 @@ public interface IAccountService {
 
     void initAmountData();
 
-    void transferAmount();
+    void transferAmount(double money);
 }

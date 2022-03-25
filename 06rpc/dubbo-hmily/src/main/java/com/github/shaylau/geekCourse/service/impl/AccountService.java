@@ -90,6 +90,7 @@ public class AccountService implements IAccountService {
 
     }
 
+
     @Transactional(rollbackFor = Exception.class)
     public void initConfirm() {
         log.info("init account and freezeAccount result:true");
